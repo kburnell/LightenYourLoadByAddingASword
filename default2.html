@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="content/kendo.common.min.css" rel="stylesheet" type="text/css"/>
+        <link href="content/kendo.default.min.css" rel="stylesheet" type="text/css"/>
+
+        <script src="scripts/jquery.min.js" type="text/javascript"></script>
+        <script src="scripts/kendo.web.min.js" type="text/javascript"></script>
+</head>
+<body>
+        <div id="example" class="k-content">
+            <div id="clientsDb">
+
+                <div id="grid1"></div>
+
+            </div>
+
+            <script>
+                function onChange(e) {
+                    alert(
+                        $("#grid1").data("kendoGrid")
+                        );
+                };
+                $(document).ready(function() {
+                    $("#grid1").kendoGrid({
+                        dataSource: {
+                                          data: [
+                                              {
+                                                  FirstName: "Joe",
+                                                  LastName: "Smith"
+                                              },
+                                              {
+                                                  FirstName: "Jane",
+                                                  LastName: "Smith"
+                                          }]
+                                      },
+                        height: 370,
+                        groupable: true,
+                        scrollable: true,
+                        sortable: true,
+                        pageable: true,
+                        change: onChange,
+                        selectable: "multiple cell",
+                        columns: [ {
+                                field: "FirstName",
+                                width: 90,
+                                title: "First Name"
+                            } , {
+                                field: "LastName",
+                                width: 90,
+                                title: "Last Name"
+                            } 
+                        ]
+                    });
+                });
+            </script>
+        </div>
+
+</body>
+</html>

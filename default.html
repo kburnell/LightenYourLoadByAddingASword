@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Adding Kendo UI to a Web Page </title>
+
+		<link href="content/kendo.common.min.css" rel="stylesheet" type="text/css"/>
+		<link href="content/kendo.default.min.css" rel="stylesheet" type="text/css"/>
+
+		<script src="scripts/jquery.min.js" type="text/javascript"></script>
+		<script src="scripts/kendo.web.min.js" type="text/javascript"></script>
+
+	</head>
+	<body>
+<input id="colorPicker" />
+<input id="shapePicker" data-role="combobox", data-source='["Circle", "Oval", "Rectangle", "Square"]' data-change="onShapeChange" />
+<input id="sizePicker" data-role="combobox", data-source='["Small", "Large"]'/>
+
+<script type="text/javascript">
+
+	function onColorChange(e) {
+		alert('Color Change!');
+	}
+
+	function onShapeChange(e) {
+		alert('Shape Change');
+	}
+
+	function onSizeChange(e) {
+		alert('Size Change');
+	}
+
+    $(document).ready(function () {
+
+        $("#colorPicker").kendoComboBox({
+        	dataSource: ["Blue", "Green", "Red", "Yellow"],
+        	change: onColorChange
+        });
+
+		kendo.init($("#shapePicker"));
+
+		kendo.init($("#sizePicker"));
+		
+		var sizePicker = $("#sizePicker");
+		sizePicker.bind("change", onSizeChange).data("kendoComboBox");
+
+    });
+</script>
+	</body>
+</html>
+
